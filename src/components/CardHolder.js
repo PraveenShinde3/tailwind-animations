@@ -9,7 +9,6 @@ const CardWrapper = ({ data, name }) => {
         <p className="bg-white px-4 py-1 text-sm font-medium border border-zinc-200 rounded-full w-fit">
           {name}
         </p>
-        <button className=" text-sm">view code</button>
       </div>
       <div className="grid grid-cols-6 gap-10 flex-wrap items-start">
         {data.map((animation) => (
