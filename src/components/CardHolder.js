@@ -10,14 +10,16 @@ const CardWrapper = ({ data, name }) => {
           {name}
         </p>
       </div>
-      <div className="grid grid-cols-6 gap-10 flex-wrap items-start">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-10 justify-center flex-wrap items-start">
         {data.map((animation) => (
-          <Card
-            key={animation.id}
-            id={animation.id}
-            animation={animation.className}
-            name={animation.name}
-          />
+          <div className="w-full flex justify-center">
+            <Card
+              key={animation.id}
+              id={animation.id}
+              animation={animation.className}
+              name={animation.name}
+            />
+          </div>
         ))}
       </div>
     </div>
