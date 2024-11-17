@@ -35,10 +35,10 @@ const Header = () => {
                 </code>{" "}
                 file under <code>theme</code> section:
               </p>
-              <div className="relative group w-full">
+              <div className="relative group w-full overflow-hidden box-border">
                 <button
                   onClick={handleCopy}
-                  className="absolute z-10 top-2 flex gap-1 items-center right-2 px-4 py-1 text-xs  "
+                  className="absolute z-10 bg-zinc-50 rounded top-2 flex gap-1 items-center right-2 px-2 mx-2 py-1 text-xs  "
                 >
                   <LuCopy /> Copy code
                 </button>
