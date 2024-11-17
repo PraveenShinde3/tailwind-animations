@@ -9,16 +9,16 @@ const CardWrapper = ({ data, name }) => {
         <p className="bg-white px-4 py-1 text-sm font-medium border border-zinc-200 rounded-full w-fit">
           {name}
         </p>
-        <button className=" text-sm">view code</button>
       </div>
-      <div className="grid grid-cols-6 gap-10 flex-wrap items-start">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-10 justify-center flex-wrap items-start">
         {data.map((animation) => (
-          <Card
-            key={animation.id}
-            id={animation.id}
-            animation={animation.className}
-            name={animation.name}
-          />
+          <div key={animation.id} className="w-full flex justify-center">
+            <Card
+              id={animation.id}
+              animation={animation.className}
+              name={animation.name}
+            />
+          </div>
         ))}
       </div>
     </div>

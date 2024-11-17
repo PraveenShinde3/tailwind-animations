@@ -56,8 +56,8 @@ const Header = () => {
           </ul>
         </div>
         <small className="px-2 border-l-2 border-s-zinc-100 p-1 ">
-          <span className="font-medium">Note:</span> Hover over the card to see
-          the animations
+          <span className="font-medium">Note:</span> Hover/Click over the card
+          to see the animations
         </small>
       </div>
     </div>
