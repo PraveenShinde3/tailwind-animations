@@ -1,3 +1,4 @@
+import BuyMeCoffee from "@/components/BuyMeCoffee";
 import CardHolder from "@/components/CardHolder";
 import Header from "@/components/Header";
 import Link from "next/link";

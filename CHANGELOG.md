@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/PraveenShinde3/tailwind-animations/compare/v0.1.5...v0.1.6) (2024-11-19)
+
+### [0.1.5](https://github.com/PraveenShinde3/tailwind-animations/compare/v0.1.4...v0.1.5) (2024-11-19)
+
+
+### Features
+
+* Added Buy Me a Coffee ([6629b4a](https://github.com/PraveenShinde3/tailwind-animations/commit/6629b4afad5b2eef0ef66885f28b76cd83cef754))
+
 ### [0.1.4](https://github.com/PraveenShinde3/tailwind-animations/compare/v0.1.3...v0.1.4) (2024-11-17)
 
 
