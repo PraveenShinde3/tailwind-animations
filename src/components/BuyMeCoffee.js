@@ -4,12 +4,12 @@ import buymeacoffee from "../../public/BuyMeACoffee.svg";
 
 const BuyMeCoffee = () => {
   return (
-    <div className="flex justify-center z-30 mt-8 fixed bottom-2 right-2">
+    <div className="flex justify-center z-30 ">
       <a href="https://www.buymeacoffee.com/praveenshinde" target="_blank">
         <Image
           src={buymeacoffee}
           alt="Buy Me A Coffee"
-          className="w-24 sm:w-36"
+          className="w-20 sm:w-20 md:w-24 lg:w-32"
         />
       </a>
     </div>

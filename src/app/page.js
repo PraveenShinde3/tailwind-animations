@@ -8,7 +8,6 @@ export default function Home() {
     <div className="mx-auto container  min-h-screen py-8 pb-20 gap-16 sm:py-20 font-[family-name:var(--font-geist-sans)]">
       <header className="flex gap-4 items-center px-6 sm:px-16 md:px-40 lg:px-60 xl:px-80 sm:gap-6 ">
         <Header />
-        <BuyMeCoffee />
       </header>
       <main className="flex mx-6 sm:mx-12 md:mx-24 lg:mx-32 xl:mx-44 flex-col gap-8 py-10 items-center sm:items-start">
         <CardHolder />
