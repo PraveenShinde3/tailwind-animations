@@ -18,11 +18,11 @@ const Settings = () => {
   const [resetLoading, setResetLoading] = useState(false);
   const [resetDone, setResetDone] = useState(false);
 
-  const animationStyle = {
-    transition: settings.isEnabled
-      ? `all ${settings.duration}ms ${settings.timingFunction} ${settings.delay}ms`
-      : "none",
-  };
+  // const animationStyle = {
+  //   transition: settings.isEnabled
+  //     ? `all ${settings.duration}ms ${settings.timingFunction} ${settings.delay}ms`
+  //     : "none",
+  // };
 
   const resetSettings = async () => {
     setResetLoading(true);
@@ -42,7 +42,7 @@ const Settings = () => {
   };
   return (
     <div className="max-w-[950px] mx-auto space-y-2">
-      <div className="text-sm grid grid-cols-3 gap-4 sm:gap-6 w-full px-4 py-3 border rounded-xl">
+      <div className="text-sm grid grid-cols-3 items-end gap-4 sm:gap-6 w-full px-4 py-3 border rounded-xl">
         <div className="space-y-2 flex-1">
           <label htmlFor="duration" className="mb-2 block">
             Duration: {settings.duration}ms
