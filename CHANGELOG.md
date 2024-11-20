@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://github.com/PraveenShinde3/tailwind-animations/compare/v0.1.8...v0.1.9) (2024-11-20)
+
+
+### Bug Fixes
+
+* downgrade React version from 19 to 18 for zustand compatibility ([ffd1d8d](https://github.com/PraveenShinde3/tailwind-animations/commit/ffd1d8da5be3bc63094fcb6fa76c5cce85b3b1b0))
+
+### [0.1.8](https://github.com/PraveenShinde3/tailwind-animations/compare/v0.1.7...v0.1.8) (2024-11-20)
+
+
+### Features
+
+* Added setting for animations ([0ac8bb7](https://github.com/PraveenShinde3/tailwind-animations/commit/0ac8bb7a78bffc6f5d0741d2825ace7743b5487c))
+
 ### [0.1.7](https://github.com/PraveenShinde3/tailwind-animations/compare/v0.1.6...v0.1.7) (2024-11-19)
 
 ### [0.1.6](https://github.com/PraveenShinde3/tailwind-animations/compare/v0.1.5...v0.1.6) (2024-11-19)
