@@ -3,8 +3,10 @@ import React from "react";
 import { LuCopy } from "react-icons/lu";
 // import { animationVariants } from "@/utils/data";
 import { useToast } from "@/hooks/use-toast";
+import useSettingsStore from "@/utils/store";
 
 const Card = ({ id, animation, name }) => {
+  const { settings } = useSettingsStore();
   const animationVariants = {
     "animate-fadeIn": "hover:animate-fadeIn",
     "animate-fadeOut": "hover:animate-fadeOut",
@@ -67,6 +69,70 @@ const Card = ({ id, animation, name }) => {
     "animate-diagonalSwing": "hover:animate-diagonalSwing",
     "animate-swingBounce": "hover:animate-swingBounce",
   };
+
+  const showAnimations = {
+    "animate-fadeIn": "animate-fadeIn",
+    "animate-fadeOut": "animate-fadeOut",
+    "animate-fadeUp": "animate-fadeUp",
+    "animate-fadeDown": "animate-fadeDown",
+    "animate-fadeLeft": "animate-fadeLeft",
+    "animate-fadeRight": "animate-fadeRight",
+    "animate-slideUp": "animate-slideUp",
+    "animate-slideDown": "animate-slideDown",
+    "animate-slideLeft": "animate-slideLeft",
+    "animate-slideRight": "animate-slideRight",
+    "animate-slideIn": "animate-slideIn",
+    "animate-slideOut": "animate-slideOut",
+    "animate-rotate": "animate-rotate",
+    "animate-scaleUp": "animate-scaleUp",
+    "animate-scaleDown": "animate-scaleDown",
+    "animate-scaleLeft": "animate-scaleLeft",
+    "animate-scaleRight": "animate-scaleRight",
+    "animate-scaleIn": "animate-scaleIn",
+    "animate-scaleOut": "animate-scaleOut",
+    "animate-scaleUpDown": "animate-scaleUpDown",
+    "animate-scaleBounce": "animate-scaleBounce",
+    "animate-bounce": "animate-bounce",
+    "animate-bounceIn": "animate-bounceIn",
+    "animate-bounceOut": "animate-bounceOut",
+    "animate-bounceRight": "animate-bounceRight",
+    "animate-bounceLeft": "animate-bounceLeft",
+    "animate-bounceUp": "animate-bounceUp",
+    "animate-bounceDown": "animate-bounceDown",
+    "animate-zoomIn": "animate-zoomIn 0.5s ease-out",
+    "animate-zoomOut": "animate-zoomOut 0.5s ease-out",
+    "animate-pulse": "animate-pulse 1.5s infinite",
+    "animate-rotate": "animate-rotate 1s linear infinite",
+    "animate-shake": "animate-shake 0.5s ease-in-out",
+    "animate-ping": "animate-ping",
+    "animate-heartbeat": "animate-heartbeat",
+    "animate-flipX": "animate-flipX",
+    "animate-flipY": "animate-flipY",
+    "animate-rollIn": "animate-rollIn",
+    "animate-rollOut": "animate-rollOut",
+    "animate-wobble": "animate-wobble",
+    "animate-jello": "animate-jello",
+    "animate-lightSpeedIn": "animate-lightSpeedIn",
+    "animate-lightSpeedOut": "animate-lightSpeedOut",
+    "animate-spinClockwise": "animate-spinClockwise",
+    "animate-spinCounterClockwise": "animate-spinCounterClockwise",
+    "animate-spinFast": "animate-spinFast",
+    "animate-spinSlow": "animate-spinSlow",
+    "animate-spinBounce": "animate-spinBounce",
+    "animate-spinZigzag": "animate-spinZigzag",
+    "animate-ripple": "animate-ripple",
+    "animate-stretchX": "animate-stretchX",
+    "animate-stretchY": "animate-stretchY",
+    "animate-pendulum": "animate-pendulum",
+    "animate-swingRotate": "animate-swingRotate",
+    "animate-blurIn": "animate-blurIn",
+    "animate-blurOut": "animate-blurOut",
+    "animate-glowPulse": "animate-glowPulse",
+    "animate-glow": "animate-glow",
+    "animate-diagonalSwing": "animate-diagonalSwing",
+    "animate-swingBounce": "animate-swingBounce",
+  };
+
   const { toast } = useToast();
   const handleCopy = (code) => {
     navigator.clipboard.writeText(code).then(() => {
@@ -81,10 +147,23 @@ const Card = ({ id, animation, name }) => {
     <div className="flex flex-col w-fit items-center space-y-2">
       <div
         key={id}
-        className={` w-[100px] h-[100px] rounded-2xl shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] bg-gray-900 ${animationVariants[animation]} transform transition duration-500`}
+        style={{
+          animationDuration: `${
+            animation === "animate-spinSlow"
+              ? 2 * settings.duration
+              : settings.duration
+          }ms`,
+          animationDelay: `${settings.delay}ms`,
+          animationTimingFunction: settings.timingFunction,
+        }}
+        className={` w-[100px] h-[100px] rounded-2xl shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] bg-gray-900 ${
+          settings.isEnabled
+            ? showAnimations[animation]
+            : animationVariants[animation]
+        } transform transition duration-500`}
       ></div>
       <div className="text-[0.8rem] font-medium flex px-1 justify-between w-full items-center">
-        <p className="text-wrap z-20 w-[80px] leading-[0.8rem]">{name}</p>
+        <p className="text-wrap z-20 w-[80px] leading-[0.9rem]">{name}</p>
         <button onClick={() => handleCopy(animation)}>
           <LuCopy className="hover:cursor-pointer" />
         </button>

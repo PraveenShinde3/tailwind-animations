@@ -1,6 +1,6 @@
-import BuyMeCoffee from "@/components/BuyMeCoffee";
 import CardHolder from "@/components/CardHolder";
 import Header from "@/components/Header";
+import Settings from "@/components/Settings";
 import Link from "next/link";
 
 export default function Home() {
@@ -10,6 +10,7 @@ export default function Home() {
         <Header />
       </header>
       <main className="flex mx-6 sm:mx-12 md:mx-24 lg:mx-32 xl:mx-44 flex-col gap-8 py-10 items-center sm:items-start">
+        <Settings />
         <CardHolder />
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
