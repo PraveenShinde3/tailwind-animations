@@ -5,7 +5,11 @@ import bmcLogo from "../../public/bmc-full-logo.svg";
 const BuyMeCoffee = () => {
   return (
     <div className="flex justify-center z-30 ">
-      <a href="https://www.buymeacoffee.com/praveenshinde" target="_blank">
+      <a
+        href="https://www.buymeacoffee.com/praveenshinde"
+        target="_blank"
+        className="outline-none"
+      >
         <Image
           src={bmcLogo}
           alt="Buy Me A Coffee"

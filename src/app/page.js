@@ -1,3 +1,4 @@
+import BasicAnimationGuide from "@/components/BasicAnimationGuide";
 import CardHolder from "@/components/CardHolder";
 import Header from "@/components/Header";
 import Settings from "@/components/Settings";
@@ -9,7 +10,8 @@ export default function Home() {
       <header className="flex gap-4 items-center px-6 sm:px-16 md:px-40 lg:px-60 xl:px-80 sm:gap-6 ">
         <Header />
       </header>
-      <main className="flex mx-6 sm:mx-12 md:mx-24 lg:mx-32 xl:mx-44 flex-col gap-8 py-10 items-center sm:items-start">
+      <main className="flex mx-6 sm:mx-12 md:mx-24 lg:mx-32 xl:mx-44 flex-col gap-8 py-6 items-center sm:items-start">
+        <BasicAnimationGuide />
         <Settings />
         <CardHolder />
       </main>
