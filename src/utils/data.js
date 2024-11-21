@@ -232,16 +232,17 @@ const animationData = [
   { id: 44, name: "Jello", animation: "Other", className: "animate-jello" },
   {
     id: 45,
-    name: "LightSpeed In",
-    animation: "Other",
-    className: "animate-lightSpeedIn",
-  },
-  {
-    id: 46,
     name: "LightSpeed Out",
     animation: "Other",
     className: "animate-lightSpeedOut",
   },
+  {
+    id: 46,
+    name: "LightSpeed In",
+    animation: "Other",
+    className: "animate-lightSpeedIn",
+  },
+
   {
     id: 47,
     name: "Spin Slow",
