@@ -181,6 +181,8 @@ const Card = ({ id, animation, name }) => {
           animationDuration: `${
             animation === "animate-spinSlow"
               ? 2 * settings.duration
+              : animation.includes("light")
+              ? settings.duration / 2
               : settings.duration
           }ms`,
           animationDelay: `${settings.delay}ms`,
