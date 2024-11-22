@@ -72,18 +72,6 @@ const animationData = [
     className: "animate-bounceRight",
   },
   {
-    id: 13,
-    name: "In",
-    animation: "Zoom",
-    className: "animate-zoomIn",
-  },
-  {
-    id: 14,
-    name: "Out",
-    animation: "Zoom",
-    className: "animate-zoomOut",
-  },
-  {
     id: 16,
     name: "Ping",
     animation: "Reaction",
@@ -176,13 +164,13 @@ const animationData = [
   {
     id: 32,
     name: "Zoom In",
-    animation: "Other",
+    animation: "Zoom",
     className: "animate-zoomIn",
   },
   {
     id: 33,
     name: "Zoom Out",
-    animation: "Other",
+    animation: "Zoom",
     className: "animate-zoomOut",
   },
   {
@@ -339,6 +327,66 @@ const animationData = [
     animation: "Swing",
     className: "animate-swingBounce",
   },
+  {
+    id: 63,
+    name: "Zoom In Up",
+    animation: "Zoom",
+    className: "animate-zoomInUp",
+  },
+  {
+    id: 64,
+    name: "Zoom In Down",
+    animation: "Zoom",
+    className: "animate-zoomInDown",
+  },
+  {
+    id: 65,
+    name: "Zoom In Right",
+    animation: "Zoom",
+    className: "animate-zoomInRight",
+  },
+  {
+    id: 66,
+    name: "Zoom In Left",
+    animation: "Zoom",
+    className: "animate-zoomInLeft",
+  },
+  {
+    id: 67,
+    name: "Zoom In Bottom Left",
+    animation: "Zoom",
+    className: "animate-zoomInBottomLeft",
+  },
+  {
+    id: 68,
+    name: "Zoom In Bottom Right",
+    animation: "Zoom",
+    className: "animate-zoomInBottomRight",
+  },
+  {
+    id: 69,
+    name: "Zoom Out Left",
+    animation: "Zoom",
+    className: "animate-zoomOutLeft",
+  },
+  {
+    id: 70,
+    name: "Zoom Out Right",
+    animation: "Zoom",
+    className: "animate-zoomOutRight",
+  },
+  {
+    id: 71,
+    name: "Zoom Out Down",
+    animation: "Zoom",
+    className: "animate-zoomOutDown",
+  },
+  {
+    id: 72,
+    name: "Zoom Out Up",
+    animation: "Zoom",
+    className: "animate-zoomOutUp",
+  },
 ];
 
 const animationVariants = {
@@ -428,6 +476,14 @@ const themeData = `theme: {
         bounceDown: "bounceDown 0.5s ease-in-out",
         zoomIn: "zoomIn 0.5s ease-out",
         zoomOut: "zoomOut 0.5s ease-out",
+        zoomInUp: "zoomInUp 0.5s",
+        zoomInDown: "zoomInDown 0.5s",
+        zoomInLeft: "zoomInLeft 0.5s",
+        zoomInRight: "zoomInRight 0.5s",
+        zoomInBottomRight: "zoomInBottomRight 0.5s",
+        zoomInBottomLeft:"zoomInBottonLeft 0.5s",
+        zoomInTopLeft: "zoomInTopLeft 0.5s",
+        zoomInTopRight: "zoomInTopRight 0.5s",
         pulse: "pulse 1.5s infinite",
         rotate: "rotate 1s linear infinite",
         ping: "ping 1s cubic-bezier(0, 0, 0.2, 1) infinite",
@@ -715,10 +771,6 @@ const themeData = `theme: {
           "50%": { transform: "rotate(15deg)" },
           "100%": { transform: "rotate(0deg)" },
         },
-      },
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
       },
     },
   }`;
