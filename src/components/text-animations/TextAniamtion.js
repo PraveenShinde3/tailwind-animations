@@ -35,8 +35,8 @@ const TextAniamtion = () => {
               <CopyCode themeData={textAnimationTailwindConfig} />
             </li>
             <li>
-              Customize the animation using Tailwind's @keyframes and animation
-              utilities.
+              Customize the animation using Tailwind&apos;s @keyframes and
+              animation utilities.
             </li>
           </ul>
         </div>
