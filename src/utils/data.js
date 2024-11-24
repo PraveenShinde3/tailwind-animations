@@ -1258,4 +1258,337 @@ const themeData = `theme: {
     },
   },`;
 
-export { animationData, animationVariants, themeData };
+const textAnimationTailwindConfig = `theme: {
+    extend: {
+      animation: {
+        "char-reveal": "charReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
+        "word-reveal-up": "word-reveal-up 0.5s ease-in-out forwards",
+        "word-reveal-side": "word-reveal-side 0.5s ease-in-out forwards",
+        shimmer: "shimmer 5s infinite linear",
+      },
+      keyframes: {
+        charReveal: {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(20px)",
+            filter: "blur(8px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+            filter: "blur(0)",
+          },
+        },
+        "word-reveal-up": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(10px)",
+            filter: "blur(2px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+            filter: "blur(0)",
+          },
+        },
+        "word-reveal-side": {
+          "0%": {
+            opacity: "0",
+            filter: "blur(2px)",
+            transform: "scale(1.1)",
+          },
+          "100%": {
+            opacity: "1",
+            filter: "blur(0)",
+            transform: "scale(1)",
+          },
+        },
+        shimmer: {
+          "0%": {
+            backgroundPosition: "200% 0",
+          },
+          "100%": {
+            backgroundPosition: "-200% 0",
+          },
+        },
+      },
+    },
+  },
+  `;
+
+const scrambleTextAnimationCode = `
+  "use client";
+  import React, { useState, useEffect, useCallback } from "react";
+  
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+  
+  const ScrambleTextAnimation = ({
+    text,
+    className = "",
+    delay = 0,
+    scrambleSpeed = 50,
+    duration = 1500,
+  }) => {
+    const [displayChars, setDisplayChars] = useState(text.split(""));
+  
+    const scrambleChar = useCallback(() => {
+      return characters[Math.floor(Math.random() * characters.length)];
+    }, []);
+  
+    useEffect(() => {
+      let timeoutId;
+      let intervalId;
+      const iterations = Math.floor(duration / scrambleSpeed);
+      let currentIteration = 0;
+  
+      const startAnimation = () => {
+        intervalId = setInterval(() => {
+          currentIteration++;
+  
+          setDisplayChars((prev) =>
+            text.split("").map((targetChar, index) => {
+              if (targetChar === " ") return " "; // Preserve spaces
+  
+              // Gradually increase chance of settling on final character
+              const progress = currentIteration / iterations;
+              const charProgress = index / text.length;
+  
+              if (progress > charProgress && Math.random() > 0.5) {
+                return targetChar;
+              }
+  
+              if (prev[index] === targetChar && Math.random() > 0.3) {
+                return targetChar;
+              }
+  
+              return scrambleChar();
+            })
+          );
+  
+          if (currentIteration >= iterations) {
+            clearInterval(intervalId);
+            setDisplayChars(text.split(""));
+          }
+        }, scrambleSpeed);
+      };
+  
+      timeoutId = setTimeout(startAnimation, delay * 100);
+  
+      return () => {
+        clearTimeout(timeoutId);
+        clearInterval(intervalId);
+      };
+    }, [text, delay, scrambleSpeed, duration, scrambleChar]);
+  
+    return (
+      <span className={\`inline-block \${className}\`}>
+        {displayChars.map((char, index) => (
+          <span
+            key={\`\${index}-\${char}\`}
+            className="inline-block"
+            style={{
+              transition: "all 0.1s ease-out",
+            }}
+          >
+            {char === " " ? "\\u00A0" : char}
+          </span>
+        ))}
+      </span>
+    );
+  };
+  
+  export default ScrambleTextAnimation;
+  `;
+
+const TextBlurRevealCode = `
+"use client";
+import React from "react";
+
+const TextBlurReveal = ({ text, className = "", delay = 0, charDelay = 0.08 }) => {
+  return (
+    <div className="p-4">
+      <span className={\`inline-block \${className} overflow-hidden\`}>
+        {text.split("").map((char, index) => (
+          <span
+            key={index}
+            className="inline-block animate-char-reveal transform opacity-0"
+            style={{
+              animationDelay: \`\${delay + index * charDelay}s\`,
+              animationFillMode: "forwards",
+            }}
+          >
+            {char === " " ? "\\u00A0" : char}
+          </span>
+        ))}
+      </span>
+    </div>
+  );
+};
+
+export default TextBlurReveal;
+`;
+
+const TextShimmerEffectCode = `"use client";
+import React from "react";
+
+const TextShimmerEffect = ({
+  text,
+  className = "",
+  shimmerDuration = 3, // Shimmer animation duration
+}) => {
+  return (
+    <div>
+      <div
+        className={\`relative inline-block overflow-hidden text-black \${className}\`}
+        style={{
+          background:
+            "linear-gradient(90deg, #000000 10%, #c0c0c0 40%, #707070 100%)",
+          backgroundSize: "200% 100%",
+          animation: \`shimmer \${shimmerDuration}s infinite linear\`,
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}
+      >
+        {text}
+      </div>
+    </div>
+  );
+};
+
+export default TextShimmerEffect;
+`;
+
+const WordAnimationCode = `
+"use client";
+import { useEffect, useState } from "react";
+
+const words = [
+  "Creators",
+  "Innovators",
+  "Dreamers",
+  "Builders",
+  "Thinkers",
+  "Visionaries",
+];
+
+function useWordCycle(words, interval) {
+  const [index, setIndex] = useState(0);
+  const [isInitial, setIsInitial] = useState(true);
+
+  useEffect(() => {
+    if (isInitial) {
+      setIndex(Math.floor(Math.random() * words.length));
+      setIsInitial(false);
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setIndex((current) => (current + 1) % words.length);
+    }, interval);
+    return () => clearInterval(timer);
+  }, [words, interval, isInitial]);
+
+  return words[index];
+}
+
+const WordAnimation = () => {
+  const word = useWordCycle(words, 1600);
+  return (
+    <div className="inline-block text-primary">
+      {word?.split("").map((char, index) => (
+        <span
+          key={\`\${word}-\${char}-\${index}\`}
+          className={\`inline-block whitespace-pre opacity-0 animate-fadeUp\`}
+          style={{ animationDelay: \`\${index * 0.015}s\` }}
+        >
+          {char}
+        </span>
+      ))}
+    </div>
+  );
+};
+
+export default WordAnimation;
+`;
+
+const TextWordBlurRevealUpCode = `
+"use client";
+import React from "react";
+
+const TextWordBlurRevealUp = ({
+  text,
+  className = "",
+  delay = 0,
+  wordDelay = 0.15, // Adjusted delay for words
+}) => {
+  return (
+    <div className="p-4">
+      <span className={\`inline-block \${className} overflow-hidden\`}>
+        {text.split(" ").map((word, wordIndex) => (
+          <span
+            key={wordIndex}
+            className="inline-block animate-word-reveal-up opacity-0"
+            style={{
+              animationDelay: \`\${delay + wordIndex * wordDelay}s\`,
+              animationFillMode: "forwards",
+            }}
+          >
+            {word === " " ? "\\u00A0" : word}
+            <span>&nbsp;</span>
+          </span>
+        ))}
+      </span>
+    </div>
+  );
+};
+
+export default TextWordBlurRevealUp;
+`;
+
+const TextWordBlurRevealSideCode = `
+"use client";
+import React from "react";
+
+const TextWordBlurRevealSide = ({
+  text,
+  className = "",
+  delay = 0,
+  wordDelay = 0.15, // Adjusted delay for words
+}) => {
+  return (
+    <div className="p-4">
+      <span className={\`inline-block \${className} overflow-hidden\`}>
+        {text.split(" ").map((word, wordIndex) => (
+          <span
+            key={wordIndex}
+            className="inline-block animate-word-reveal-side opacity-0"
+            style={{
+              animationDelay: \`\${delay + wordIndex * wordDelay}s\`,
+              animationFillMode: "forwards",
+            }}
+          >
+            {word === " " ? "\\u00A0" : word}
+            <span>&nbsp;</span>
+          </span>
+        ))}
+      </span>
+    </div>
+  );
+};
+
+export default TextWordBlurRevealSide;
+`;
+
+export {
+  animationData,
+  animationVariants,
+  themeData,
+  textAnimationTailwindConfig,
+  scrambleTextAnimationCode,
+  TextBlurRevealCode,
+  TextShimmerEffectCode,
+  WordAnimationCode,
+  TextWordBlurRevealUpCode,
+  TextWordBlurRevealSideCode,
+};

@@ -8,12 +8,18 @@ module.exports = {
   ],
   safelist: [
     {
-      pattern: /hover:animate-.*/, // Allow all hover:animate- classes
-    },
-    {
       pattern: /animate-.*/, // Allow all animate- classes
     },
   ],
+  extend: {
+    utilities: {
+      ".scrollbar-none": {
+        "&::-webkit-scrollbar": { display: "none" },
+        "-ms-overflow-style": "none" /* For IE and Edge */,
+        "scrollbar-width": "none" /* For Firefox */,
+      },
+    },
+  },
   theme: {
     extend: {
       animation: {
@@ -89,6 +95,10 @@ module.exports = {
         glow: "glow 1.5s ease-in-out infinite",
         diagonalSwing: "diagonalSwing 1s ease-in-out infinite",
         swingBounce: "swingBounce 1s ease-in-out infinite",
+        "char-reveal": "charReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
+        "word-reveal-up": "word-reveal-up 0.5s ease-in-out forwards",
+        "word-reveal-side": "word-reveal-side 0.5s ease-in-out forwards",
+        shimmer: "shimmer 5s infinite linear",
       },
       keyframes: {
         fadeIn: {
@@ -814,6 +824,50 @@ module.exports = {
           },
           "100%": {
             transform: "rotate(0deg)",
+          },
+        },
+        charReveal: {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(20px)",
+            filter: "blur(8px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+            filter: "blur(0)",
+          },
+        },
+        "word-reveal-up": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(10px)",
+            filter: "blur(2px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+            filter: "blur(0)",
+          },
+        },
+        "word-reveal-side": {
+          "0%": {
+            opacity: "0",
+            filter: "blur(2px)",
+            transform: "scale(1.1)",
+          },
+          "100%": {
+            opacity: "1",
+            filter: "blur(0)",
+            transform: "scale(1)",
+          },
+        },
+        shimmer: {
+          "0%": {
+            backgroundPosition: "200% 0",
+          },
+          "100%": {
+            backgroundPosition: "-200% 0",
           },
         },
       },

@@ -16,7 +16,7 @@ export default function Home() {
           Made by{" "}
           <Link
             href="https://praveenshinde.com/"
-            className="font-medium underline underline-offset-4 text-zinc-900"
+            className="outline-none font-medium underline underline-offset-4 text-zinc-900"
           >
             Praveen Shinde
           </Link>
