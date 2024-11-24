@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/PraveenShinde3/tailwind-animations/compare/v0.1.10...v0.2.0) (2024-11-24)
+
+
+### Features
+
+* add zoom in and zoom out animations ([1374e04](https://github.com/PraveenShinde3/tailwind-animations/commit/1374e04ee97e0a7916c08fb9d884a786bde8e762))
+* added text animtions tab ([826dff6](https://github.com/PraveenShinde3/tailwind-animations/commit/826dff6434012fd6062a3d43be7e261b3f53fd7f))
+
+
+### Bug Fixes
+
+* ESlint issue ([6a1d7bd](https://github.com/PraveenShinde3/tailwind-animations/commit/6a1d7bd2ab5d8a5fc43cd7ae190704299f19d087))
+
 ### [0.1.10](https://github.com/PraveenShinde3/tailwind-animations/compare/v0.1.9...v0.1.10) (2024-11-21)
 
 ### [0.1.9](https://github.com/PraveenShinde3/tailwind-animations/compare/v0.1.8...v0.1.9) (2024-11-20)
