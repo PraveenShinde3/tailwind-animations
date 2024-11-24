@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/PraveenShinde3/tailwind-animations/compare/v0.2.0...v0.2.1) (2024-11-24)
+
+
+### Features
+
+* Added microsoft clarity analytics ([cb2c98e](https://github.com/PraveenShinde3/tailwind-animations/commit/cb2c98ee35fce77097d1c358e6d5aa887f2d4c81))
+
 ## [0.2.0](https://github.com/PraveenShinde3/tailwind-animations/compare/v0.1.10...v0.2.0) (2024-11-24)
 
 
