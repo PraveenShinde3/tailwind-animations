@@ -9,7 +9,7 @@ export const Main = () => {
     <div className="mx-auto text-sm w-full max-w[950px]">
       <Tabs
         className="flex flex-col justify-center items-center"
-        defaultValue="typography"
+        defaultValue="basic"
       >
         <TabsList>
           <TabsTrigger value="basic">Basic</TabsTrigger>
