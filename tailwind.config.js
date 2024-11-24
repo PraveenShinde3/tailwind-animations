@@ -6,6 +6,20 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    {
+      pattern: /animate-.*/, // Allow all animate- classes
+    },
+  ],
+  extend: {
+    utilities: {
+      ".scrollbar-none": {
+        "&::-webkit-scrollbar": { display: "none" },
+        "-ms-overflow-style": "none" /* For IE and Edge */,
+        "scrollbar-width": "none" /* For Firefox */,
+      },
+    },
+  },
   theme: {
     extend: {
       animation: {
@@ -29,7 +43,19 @@ module.exports = {
         bounceUp: "bounceUp 0.5s infinite",
         bounceDown: "bounceDown 0.5s infinite",
         zoomIn: "zoomIn 0.5s infinite",
-        zoomOut: "zoomOut 0.5s infinite",
+        zoomInBottomRight: "zoomInBottomRight 1s infinite",
+        zoomInBottomLeft: "zoomInBottomLeft 1s infinite",
+        zoomInTopRight: "zoomInTopRight 1s infinite",
+        zoomInTopLeft: "zoomInTopLeft 1s infinite",
+        zoomInDown: "zoomInDown 1s infinite",
+        zoomInRight: "zoomInRight 1s infinite",
+        zoomInLeft: "zoomInLeft 1s infinite",
+        zoomInUp: "zoomInUp 1s infinite",
+        zoomOut: "zoomOut 1s infinite",
+        zoomOutLeft: "zoom-out-left 1s infinite",
+        zoomOutRight: "zoom-out-right 1s infinite",
+        zoomOutUp: "zoom-out-up 1s infinite",
+        zoomOutDown: "zoom-out-down 1s infinite",
         pulse: "pulse 1.5s infinite",
         rotate: "rotate 1s linear infinite",
         ping: "ping 1s cubic-bezier(0, 0, 0.2, 1) infinite",
@@ -46,8 +72,8 @@ module.exports = {
         scaleBounce: "scaleBounce 0.8s infinite infinite",
         flipX: "flipX 1s infinite",
         flipY: "flipY 1s infinite",
-        rollIn: "rollIn 1s ease-out",
-        rollOut: "rollOut 1s ease-in",
+        rollIn: "rollIn 1s ease-out infinite",
+        rollOut: "rollOut 1s ease-in infinite",
         wobble: "wobble 1s infinite",
         jello: "jello 1s infinite",
         lightSpeedIn: "lightSpeedIn 1s infinite",
@@ -69,6 +95,10 @@ module.exports = {
         glow: "glow 1.5s ease-in-out infinite",
         diagonalSwing: "diagonalSwing 1s ease-in-out infinite",
         swingBounce: "swingBounce 1s ease-in-out infinite",
+        "char-reveal": "charReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
+        "word-reveal-up": "word-reveal-up 0.5s ease-in-out forwards",
+        "word-reveal-side": "word-reveal-side 0.5s ease-in-out forwards",
+        shimmer: "shimmer 5s infinite linear",
       },
       keyframes: {
         fadeIn: {
@@ -255,12 +285,180 @@ module.exports = {
             transform: "scale(1)",
           },
         },
+        zoomInUp: {
+          "0%": {
+            opacity: 0,
+            transform: "scale3d(0.3, 0.3, 0.3) translate3d(0, 100%, 0)",
+          },
+          "80%": {
+            opacity: 0.8,
+            transform: "scale3d(1.1, 1.1, 1.1)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: "translate3d(0, 0%, 0)",
+          },
+        },
+        zoomInDown: {
+          "0%": {
+            opacity: 0,
+            transform: "scale3d(0.3, 0.3, 0.3) translate3d(0, -100%, 0)",
+          },
+          "80%": {
+            opacity: 0.8,
+            transform: "scale3d(1.1, 1.1, 1.1)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: "translate3d(0, 0%, 0)",
+          },
+        },
+        zoomInRight: {
+          "0%": {
+            opacity: 0,
+            transform: "scale3d(0.3, 0.3, 0.3) translate3d(-100%, 0, 0)",
+          },
+          "80%": {
+            opacity: 0.8,
+            transform: "scale3d(1.1, 1.1, 1.1)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: "translate3d(0, 0%, 0)",
+          },
+        },
+        zoomInLeft: {
+          "0%": {
+            opacity: 0,
+            transform: "scale3d(0.3, 0.3, 0.3) translate3d(100%, 0, 0)",
+          },
+          "80%": {
+            opacity: 0.8,
+            transform: "scale3d(1.1, 1.1, 1.1)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: "translate3d(0, 0%, 0)",
+          },
+        },
+        zoomInBottomRight: {
+          "0%": {
+            opacity: 0,
+            transform: "scale3d(0.3, 0.3, 0.3) translate3d(100%, 100%, 0)",
+          },
+          "80%": {
+            opacity: 0.8,
+            transform: "scale3d(1.1, 1.1, 1.1)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: "translate3d(0, 0%, 0)",
+          },
+        },
+        zoomInTopRight: {
+          "0%": {
+            opacity: 0,
+            transform: "scale3d(0.3, 0.3, 0.3) translate3d(100%, -100%, 0)",
+          },
+          "80%": {
+            opacity: 0.8,
+            transform: "scale3d(1.1, 1.1, 1.1)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: "translate3d(0, 0%, 0)",
+          },
+        },
+        zoomInTopLeft: {
+          "0%": {
+            opacity: 0,
+            transform: "scale3d(0.3, 0.3, 0.3) translate3d(-100%, -100%, 0)",
+          },
+          "80%": {
+            opacity: 0.8,
+            transform: "scale3d(1.1, 1.1, 1.1)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: "translate3d(0, 0%, 0)",
+          },
+        },
+        zoomInBottomLeft: {
+          "0%": {
+            opacity: 0,
+            transform: "scale3d(0.3, 0.3, 0.3) translate3d(-100%, 100%, 0)",
+          },
+          "80%": {
+            opacity: 0.8,
+            transform: "scale3d(1.1, 1.1, 1.1)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: "translate3d(0, 0%, 0)",
+          },
+        },
         zoomOut: {
           from: {
             transform: "scale(1)",
           },
           to: {
             transform: "scale(0)",
+          },
+        },
+        "zoom-out-down": {
+          "0%": {
+            opacity: 1,
+            transform: "translate3d(0, 0%, 0)",
+          },
+          "15%": {
+            opacity: 0.8,
+            transform: "scale3d(1.1, 1.1, 1.1)",
+          },
+          "100%": {
+            opacity: 0,
+            transform: "scale3d(0.3, 0.3, 0.3) translate3d(0, 100%, 0)",
+          },
+        },
+        "zoom-out-up": {
+          "0%": {
+            opacity: 1,
+            transform: "translate3d(0, 0%, 0)",
+          },
+          "15%": {
+            opacity: 0.8,
+            transform: "scale3d(1.1, 1.1, 1.1)",
+          },
+          "100%": {
+            opacity: 0,
+            transform: "scale3d(0.3, 0.3, 0.3) translate3d(0, -100%, 0)",
+          },
+        },
+        "zoom-out-left": {
+          "0%": {
+            opacity: 1,
+            transform: "translate3d(0, 0%, 0)",
+          },
+          "15%": {
+            opacity: 0.8,
+            transform: "scale3d(1.1, 1.1, 1.1)",
+          },
+          "100%": {
+            opacity: 0,
+            transform: "scale3d(0.3, 0.3, 0.3) translate3d(-100%, 0%, 0)",
+          },
+        },
+        "zoom-out-right": {
+          "0%": {
+            opacity: 1,
+            transform: "translate3d(0, 0%, 0)",
+          },
+          "15%": {
+            opacity: 0.8,
+            transform: "scale3d(1.1, 1.1, 1.1)",
+          },
+          "100%": {
+            opacity: 0,
+            transform: "scale3d(0.3, 0.3, 0.3) translate3d(100%, 0%, 0)",
           },
         },
         pulse: {
@@ -626,6 +824,50 @@ module.exports = {
           },
           "100%": {
             transform: "rotate(0deg)",
+          },
+        },
+        charReveal: {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(20px)",
+            filter: "blur(8px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+            filter: "blur(0)",
+          },
+        },
+        "word-reveal-up": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(10px)",
+            filter: "blur(2px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+            filter: "blur(0)",
+          },
+        },
+        "word-reveal-side": {
+          "0%": {
+            opacity: "0",
+            filter: "blur(2px)",
+            transform: "scale(1.1)",
+          },
+          "100%": {
+            opacity: "1",
+            filter: "blur(0)",
+            transform: "scale(1)",
+          },
+        },
+        shimmer: {
+          "0%": {
+            backgroundPosition: "200% 0",
+          },
+          "100%": {
+            backgroundPosition: "-200% 0",
           },
         },
       },

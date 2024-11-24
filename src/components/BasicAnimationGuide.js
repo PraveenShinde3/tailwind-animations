@@ -17,7 +17,7 @@ const BasicAnimationGuide = () => {
   return (
     <div className="mx-auto w-full max-w-[600px] flex flex-col gap-6">
       <div>
-        <p className="font-medium ">Installation</p>
+        <p className="font-medium text-base">Installation</p>
         <ul className="list-disc pl-5 text-sm">
           <li className="py-2">
             <p className=" mb-2">

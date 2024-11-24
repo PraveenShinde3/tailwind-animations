@@ -54,6 +54,10 @@ const CardHolder = () => {
     (animation) => animation.animation === "Reaction"
   );
 
+  const zoomAnimations = animationData.filter(
+    (animation) => animation.animation === "Zoom"
+  );
+
   const otherAnimations = animationData.filter(
     (animation) => animation.animation === "Other"
   );
@@ -69,6 +73,7 @@ const CardHolder = () => {
         <CardWrapper name="Swing" data={swingAnimations} />
         <CardWrapper name="Spin" data={spinAnimations} />
         <CardWrapper name="Reaction" data={reactionAnimations} />
+        <CardWrapper name="Zoom" data={zoomAnimations} />
         <CardWrapper name="Other" data={otherAnimations} />
       </div>
     </>
