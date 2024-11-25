@@ -2,6 +2,8 @@
 
 import { useEffect } from "react";
 
+const clarityProjectId = process.env.CLARITY_PROJECT_ID;
+
 const ClarityScript = () => {
   useEffect(() => {
     (function (c, l, a, r, i, t, y) {
@@ -15,7 +17,7 @@ const ClarityScript = () => {
       t.src = "https://www.clarity.ms/tag/" + i;
       y = l.getElementsByTagName(r)[0];
       y.parentNode.insertBefore(t, y);
-    })(window, document, "clarity", "script", "YOUR_PROJECT_ID");
+    })(window, document, "clarity", "script", clarityProjectId);
   }, []);
 
   return null;
