@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-const clarityProjectId = process.env.CLARITY_PROJECT_ID;
+const clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
 
 const ClarityScript = () => {
   useEffect(() => {
