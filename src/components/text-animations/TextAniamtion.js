@@ -6,6 +6,7 @@ import TextWordBlurRevealSide from "./TextWordBlurRevealSide";
 import TextWordBlurRevealUp from "./TextWordBlurRevealUp";
 import TextShimmerEffect from "./TextShimmerEffect";
 import CopyCode from "../utils/CopyCode";
+import CountAnimation from "./CountAnimation";
 import { textAnimationTailwindConfig } from "@/utils/data";
 
 const TextAniamtion = () => {
@@ -51,6 +52,7 @@ const TextAniamtion = () => {
         <TextWordBlurRevealUp text="Text Word Blur Up Animation" />
         <WordAnimation />
         <TextShimmerEffect text="Text Shimmer Effect" />
+        <CountAnimation start={0} end={100} duration={2000} />
       </div>
     </div>
   );

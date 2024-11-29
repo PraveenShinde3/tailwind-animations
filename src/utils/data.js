@@ -1580,6 +1580,49 @@ const TextWordBlurRevealSide = ({
 export default TextWordBlurRevealSide;
 `;
 
+const countingAnimationCode = `
+"use client";
+import React from "react";
+
+const CircularTextAnimation = ({ text, radius = 100, className = "" }) => {
+  const characters = text.split("");
+
+  return (
+    <div
+      className={\`relative w-[\${radius * 2}px] h-[\${radius * 2}px] flex justify-center items-center\`}
+      style={{
+        width: \`\${radius * 2}px\`,
+        height: \`\${radius * 2}px\`,
+      }}
+    >
+      {characters.map((char, index) => {
+        const angle = (index / characters.length) * 360; // Calculate angle for each character
+        const x = radius * Math.cos((angle * Math.PI) / 180);
+        const y = radius * Math.sin((angle * Math.PI) / 180);
+
+        return (
+          <span
+            key={index}
+            className={\`absolute transform translate-x-1/2 translate-y-1/2 text-center \${className}\`}
+            style={{
+              transform: \`translate(\${x}px, \${y}px) rotate(\${angle}deg)\`,
+            }}
+          >
+            {char}
+          </span>
+        );
+      })}
+      <div
+        className="absolute inset-0 border border-dashed rounded-full animate-spin"
+        style={{ animationDuration: "6s", animationTimingFunction: "linear" }}
+      ></div>
+    </div>
+  );
+};
+
+export default CircularTextAnimation;
+`;
+
 export {
   animationData,
   animationVariants,
@@ -1591,4 +1634,5 @@ export {
   WordAnimationCode,
   TextWordBlurRevealUpCode,
   TextWordBlurRevealSideCode,
+  countingAnimationCode,
 };
